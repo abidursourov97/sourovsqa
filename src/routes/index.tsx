@@ -478,30 +478,56 @@ export default function Portfolio() {
               copy="I’m currently open to Software Quality Assurance opportunities, including remote and on-site roles."
             />
             <div className="contact-actions">
-              <Button asChild size="lg">
-                <a href="mailto:sourovsqa@gmail.com">
+              <a className="contact-card" href="mailto:sourovsqa@gmail.com">
+                <span className="contact-icon">
                   <Mail />
-                  Email
-                </a>
-              </Button>
-              <Button asChild size="lg" variant="outline">
-                <a href="tel:+8801737584897">
+                </span>
+                <span className="contact-details">
+                  <small>Email</small>
+                  <strong>sourovsqa@gmail.com</strong>
+                </span>
+                <ArrowUpRight className="contact-arrow" />
+              </a>
+              <a className="contact-card" href="tel:+8801737584897">
+                <span className="contact-icon">
                   <Phone />
-                  Phone
-                </a>
-              </Button>
-              <Button asChild size="lg" variant="outline">
-                <a href="https://www.linkedin.com/in/abidursourov" target="_blank" rel="noreferrer">
+                </span>
+                <span className="contact-details">
+                  <small>Phone</small>
+                  <strong>+880 1737 584897</strong>
+                </span>
+                <ArrowUpRight className="contact-arrow" />
+              </a>
+              <a
+                className="contact-card"
+                href="https://www.linkedin.com/in/abidursourov"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span className="contact-icon">
                   <Linkedin />
-                  LinkedIn
-                </a>
-              </Button>
-              <Button asChild size="lg" variant="outline">
-                <a href="https://github.com/abidursourov97" target="_blank" rel="noreferrer">
+                </span>
+                <span className="contact-details">
+                  <small>LinkedIn</small>
+                  <strong>linkedin.com/in/abidursourov</strong>
+                </span>
+                <ArrowUpRight className="contact-arrow" />
+              </a>
+              <a
+                className="contact-card"
+                href="https://github.com/abidursourov97"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span className="contact-icon">
                   <Github />
-                  GitHub
-                </a>
-              </Button>
+                </span>
+                <span className="contact-details">
+                  <small>GitHub</small>
+                  <strong>github.com/abidursourov97</strong>
+                </span>
+                <ArrowUpRight className="contact-arrow" />
+              </a>
             </div>
           </Reveal>
         </section>
