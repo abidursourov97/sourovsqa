@@ -425,7 +425,6 @@ export default function Portfolio() {
             </div>
             <div className="portrait-frame">
               <img className="portrait-photo" src={profilePhotoUrl} alt="Abidur Rahman Sourov" />
-              <span className="portrait-scan" aria-hidden="true" />
               <div>
                 <small>Software QA Engineer</small>
                 <strong>Abidur Rahman Sourov</strong>
