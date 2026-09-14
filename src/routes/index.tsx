@@ -2,24 +2,21 @@ import { createFileRoute } from "@tanstack/react-router";
 import {
   ArrowDown,
   ArrowUpRight,
-  BriefcaseBusiness,
   Check,
-  ChevronRight,
   Download,
   Github,
-  GraduationCap,
   Linkedin,
   Mail,
   MapPin,
   Menu,
-  Moon,
   Phone,
-  Send,
   ShieldCheck,
-  Sun,
   X,
 } from "lucide-react";
-import { FormEvent, useEffect, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
+
+import { Button } from "@/components/ui/button";
+import cvAsset from "@/assets/Abidur-Rahman-Sourov-CV.pdf.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -28,12 +25,12 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Portfolio of Abidur Rahman Sourov, a Software Quality Assurance Engineer with 3.5+ years in web, mobile, API and automation testing.",
+          "Portfolio of Abidur Rahman Sourov, a Software QA Engineer in Dhaka with 3.5+ years in manual, API, automation and performance testing.",
       },
       { property: "og:title", content: "Abidur Rahman Sourov | Software QA Engineer" },
       {
         property: "og:description",
-        content: "Software QA portfolio spanning manual, automated, API and AI application testing.",
+        content: "Evidence-led QA across web, mobile, API, automation and performance testing.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -42,248 +39,221 @@ export const Route = createFileRoute("/")({
   component: Portfolio,
 });
 
-const navItems = ["Home", "About", "Skills", "Experience", "Projects", "Education", "Contact"];
+const navItems = ["About", "Skills", "Projects", "Experience", "Contact"];
+
+const achievements = [
+  ["3.5+", "Years of QA Experience"],
+  ["96", "Documented Issues"],
+  ["4", "Testing Coverage Layers"],
+  ["14", "Public GitHub Repositories"],
+];
 
 const skillGroups = [
   {
-    title: "Testing",
-    items: ["Manual Testing", "Functional Testing", "Regression Testing", "Smoke Testing", "Test Planning", "Test Case Design", "Exploratory Testing", "Bug Reporting", "Release Validation"],
-  },
-  { title: "Automation", items: ["Selenium", "Playwright", "API Automation"] },
-  { title: "API & Performance", items: ["Postman", "REST API Testing", "Apache JMeter"] },
-  { title: "Tools", items: ["Jira", "GitLab", "Trello", "Microsoft Excel", "Microsoft Teams", "GitHub", "Visual Studio"] },
-  { title: "Programming", items: ["Java", "C", "SQL"] },
-  { title: "Methodologies", items: ["Agile", "Scrum", "SDLC", "AI-Assisted Testing"] },
-];
-
-const roles = [
-  {
-    role: "QA Engineer, Contractual",
-    company: "EasyAsk",
-    date: "February 2025 — Present",
-    points: ["Manual, regression and API testing for AI-powered e-commerce applications", "Test-case design and execution", "Defect documentation and tracking using Jira", "Agile collaboration and release validation", "Testing-process improvement"],
+    number: "01",
+    title: "Manual Testing",
+    items: ["Functional Testing", "Regression Testing", "Smoke Testing", "Sanity Testing", "Exploratory Testing", "Integration Testing", "UAT", "Test Planning", "Test Case Design", "Bug Reporting"],
   },
   {
-    role: "SQA Engineer",
-    company: "Blue Solutions Ltd.",
-    date: "January 2023 — January 2025",
-    points: ["Web and mobile application testing", "Functional, regression and API testing", "Postman and Playwright testing", "Defect tracking through Jira and Trello", "Collaboration with developers and product teams", "QA-process and release-workflow improvement"],
+    number: "02",
+    title: "Automation",
+    items: ["Playwright", "Selenium", "API Automation", "Page Object Model", "GitHub Actions"],
   },
   {
-    role: "Trainee SQA Engineer",
-    company: "Blue Solutions Ltd.",
-    date: "April 2022 — January 2023",
-    points: ["Manual, regression and API testing", "Test-case preparation and execution", "Defect identification and documentation", "Agile team collaboration", "Release validation"],
+    number: "03",
+    title: "API & Performance",
+    items: ["Postman", "REST API Testing", "GraphQL Testing", "Newman", "Apache JMeter"],
   },
   {
-    role: "Junior Network Officer Intern",
-    company: "Gazi Network",
-    date: "November 2021 — February 2022",
-    points: ["Daily transmission-link monitoring", "Server-health checking", "Router and switch configuration"],
+    number: "04",
+    title: "Tools & Technologies",
+    items: ["Jira", "GitLab", "Trello", "GitHub", "SQL", "Java", "C", "Visual Studio", "Agile", "Scrum", "SDLC", "STLC"],
   },
 ];
 
 const projects = [
-  { index: "01", name: "Steven Engineering", type: "Enterprise Web Application Testing", description: "An enterprise platform supporting business operations and workflow management." },
-  { index: "02", name: "Allred’s", type: "B2B eCommerce Platform", description: "An HVAC product-distribution and business-operations platform." },
-  { index: "03", name: "BongoBD", type: "OTT Streaming Platform", description: "A web and mobile entertainment platform supporting streaming, subscriptions, authentication, content discovery, playback and multi-device access." },
+  {
+    index: "01",
+    title: "Allred’s Playwright Automation",
+    category: "End-to-end automation",
+    description: "An end-to-end Playwright automation framework covering homepage, search, product, authentication and dashboard workflows.",
+    evidence: ["10 automated test cases", "Page Object Model", "HTML test reports", "Failure screenshots and videos", "GitHub Actions integration"],
+    technologies: ["Playwright", "JavaScript", "POM", "GitHub Actions"],
+    repository: "https://github.com/abidursourov97/allreds-playwright-automation",
+  },
+  {
+    index: "02",
+    title: "Plastics Inc. B2B Manual Testing",
+    category: "Manual QA case study",
+    description: "A detailed manual QA project covering functional, UI, UX, validation, cart, order and access-control testing.",
+    evidence: ["96 documented issues", "21 high-priority issues", "48 medium-priority issues", "26 low-priority issues"],
+    technologies: ["Manual Testing", "Test Cases", "Bug Reporting", "Regression Testing"],
+    repository: "https://github.com/abidursourov97/Plastics_Manual-Testing-Bug_Report",
+  },
+  {
+    index: "03",
+    title: "DummyJSON API Testing",
+    category: "API test suite",
+    description: "A structured API testing project covering CRUD operations, positive and negative scenarios, assertions and response validation.",
+    evidence: ["8 API requests", "CRUD coverage", "Automated assertions", "Response-time validation", "Newman execution"],
+    technologies: ["Postman", "REST API", "Newman", "JavaScript"],
+    repository: "https://github.com/abidursourov97/DummyJSON-API-Testing-Portfolio",
+  },
+  {
+    index: "04",
+    title: "JMeter Performance Testing",
+    category: "Performance validation",
+    description: "A performance testing project created to evaluate system behaviour, response time and stability under load.",
+    evidence: ["Load-test scenarios", "Response-time analysis", "Stability validation"],
+    technologies: ["Apache JMeter", "Performance Testing", "Load Testing"],
+    repository: "https://github.com/abidursourov97/Performance-Testing-Project-",
+  },
 ];
 
-function SectionHeading({ eyebrow, title, description }: { eyebrow: string; title: string; description?: string }) {
+const experience = [
+  ["QA Engineer, Contractual", "EasyAsk", "February 2025 – Present"],
+  ["Software Quality Assurance Engineer", "Blue Solutions", "January 2023 – January 2025"],
+  ["Trainee Software Quality Assurance Engineer", "Blue Solutions", "April 2022 – January 2023"],
+  ["Junior Network Officer Intern", "Gazi Network", "November 2021 – February 2022"],
+];
+
+function Reveal({ children, className = "" }: { children: ReactNode; className?: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const element = ref.current;
+    if (!element || !window.IntersectionObserver) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          element.classList.add("is-visible");
+          observer.unobserve(element);
+        }
+      },
+      { threshold: 0.12 },
+    );
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
+
+  return <div ref={ref} className={`reveal ${className}`}>{children}</div>;
+}
+
+function SectionHeading({ label, title, copy }: { label: string; title: string; copy?: string }) {
   return (
     <div className="section-heading">
-      <p className="eyebrow">{eyebrow}</p>
+      <p className="eyebrow"><span />{label}</p>
       <h2>{title}</h2>
-      {description ? <p className="section-description">{description}</p> : null}
+      {copy ? <p className="section-copy">{copy}</p> : null}
     </div>
   );
 }
 
-function ExternalLink({ href, children, label }: { href: string; children: React.ReactNode; label: string }) {
-  return <a className="icon-link" href={href} target="_blank" rel="noreferrer" aria-label={label}>{children}</a>;
-}
-
 function Portfolio() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [lightTheme, setLightTheme] = useState(false);
-
-  useEffect(() => {
-    const saved = window.localStorage.getItem("portfolio-theme");
-    const light = saved === "light";
-    setLightTheme(light);
-    document.documentElement.classList.toggle("light", light);
-  }, []);
-
-  const toggleTheme = () => {
-    const next = !lightTheme;
-    setLightTheme(next);
-    document.documentElement.classList.toggle("light", next);
-    window.localStorage.setItem("portfolio-theme", next ? "light" : "dark");
-  };
-
-  const submitContact = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const subject = String(data.get("subject") ?? "Portfolio enquiry");
-    const name = String(data.get("name") ?? "");
-    const email = String(data.get("email") ?? "");
-    const message = String(data.get("message") ?? "");
-    window.location.href = `mailto:sourovsqa@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`From: ${name} (${email})\n\n${message}`)}`;
-  };
 
   return (
     <div className="portfolio-shell">
       <header className="site-header">
-        <a href="#home" className="brand" aria-label="Abidur Rahman Sourov, home">
-          <span className="brand-mark">AS</span>
-          <span className="brand-copy"><strong>Abidur Rahman Sourov</strong><small>Quality assurance engineer</small></span>
+        <a className="brand" href="#top" aria-label="Abidur Rahman Sourov, home">
+          <span className="brand-mark">AR</span>
+          <span className="brand-name">Abidur Rahman Sourov</span>
         </a>
         <nav className={menuOpen ? "main-nav is-open" : "main-nav"} aria-label="Main navigation">
           {navItems.map((item) => <a key={item} href={`#${item.toLowerCase()}`} onClick={() => setMenuOpen(false)}>{item}</a>)}
+          <Button asChild size="sm" className="nav-download">
+            <a href={cvAsset.url} download="Abidur-Rahman-Sourov-CV.pdf"><Download />Download CV</a>
+          </Button>
         </nav>
-        <div className="header-actions">
-          <button className="icon-button" onClick={toggleTheme} aria-label={lightTheme ? "Use dark theme" : "Use light theme"} title={lightTheme ? "Dark theme" : "Light theme"}>
-            {lightTheme ? <Moon size={18} /> : <Sun size={18} />}
-          </button>
-          <button className="icon-button menu-button" onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen} aria-label="Toggle navigation">
-            {menuOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
-        </div>
+        <Button variant="outline" size="icon" className="menu-button" onClick={() => setMenuOpen((open) => !open)} aria-expanded={menuOpen} aria-label="Toggle navigation">
+          {menuOpen ? <X /> : <Menu />}
+        </Button>
       </header>
 
       <main>
-        <section id="home" className="hero-section">
+        <section id="top" className="hero-section">
           <div className="hero-copy">
-            <div className="status-badge"><span />Open to QA Opportunities</div>
-            <p className="hero-kicker">Software Quality Assurance Engineer · Bangladesh</p>
-            <h1>I Test Beyond<br />the <em>Happy Path.</em></h1>
-            <p className="hero-description">Software Quality Assurance Engineer with 3.5+ years of experience in manual and automated testing across web, mobile, API, and AI-powered applications.</p>
+            <div className="availability"><span />Available for QA opportunities</div>
+            <p className="hero-kicker">Software Quality Assurance Engineer</p>
+            <h1>I test beyond<br />the <em>happy path.</em></h1>
+            <p className="hero-description">I’m Abidur Rahman Sourov, a Software Quality Assurance Engineer with 3.5+ years of experience testing web and mobile applications through manual, API, automation and performance testing.</p>
             <div className="hero-actions">
-              <a className="button button-primary" href="#projects">View My Projects <ArrowDown size={17} /></a>
-              <a className="button button-secondary" href="/Abidur-Rahman-Sourov-CV.txt" download>Download CV <Download size={17} /></a>
-              <a className="button button-quiet" href="#contact">Let’s Connect <ArrowUpRight size={17} /></a>
+              <Button asChild size="lg"><a href="#projects">View My Work<ArrowDown /></a></Button>
+              <Button asChild size="lg" variant="outline"><a href={cvAsset.url} download="Abidur-Rahman-Sourov-CV.pdf">Download CV<Download /></a></Button>
+              <Button asChild size="icon" variant="outline"><a href="https://github.com/abidursourov97" target="_blank" rel="noreferrer" aria-label="GitHub"><Github /></a></Button>
+              <Button asChild size="icon" variant="outline"><a href="https://www.linkedin.com/in/abidursourov" target="_blank" rel="noreferrer" aria-label="LinkedIn"><Linkedin /></a></Button>
             </div>
-            <div className="hero-meta">
-              <span><BriefcaseBusiness size={16} />3.5+ years experience</span>
-              <span><MapPin size={16} />Bangladesh</span>
-            </div>
+            <div className="hero-meta"><span><MapPin />Dhaka, Bangladesh</span><span><ShieldCheck />Quality backed by evidence</span></div>
           </div>
-          <div className="portrait-wrap" aria-label="Portrait placeholder for Abidur Rahman Sourov">
-            <div className="portrait-grid" />
-            <div className="portrait-frame">
-              <div className="portrait-monogram">AS</div>
-              <p>Professional portrait</p>
-              <span>Abidur Rahman Sourov</span>
-            </div>
-            <div className="portrait-note"><ShieldCheck size={19} /><span><strong>Quality first.</strong><small>Every release, every path.</small></span></div>
+          <div className="portrait-wrap" aria-label="AR profile placeholder">
+            <div className="portrait-code" aria-hidden="true">TEST / VERIFY / RELEASE</div>
+            <div className="portrait-frame"><span className="portrait-initials">AR</span><div><small>Software QA Engineer</small><strong>Abidur Rahman Sourov</strong></div></div>
+            <div className="quality-chip"><Check /><span><strong>Quality first</strong><small>Every release. Every path.</small></span></div>
           </div>
         </section>
 
-        <section id="about" className="section about-section">
-          <SectionHeading eyebrow="01 / About" title="Quality is a team practice, not a final checkpoint." />
-          <div className="about-layout">
-            <p className="about-lead">I am a Software Quality Assurance Engineer focused on building reliable, user-friendly software through thoughtful testing and early defect prevention.</p>
-            <div className="about-body">
-              <p>My experience includes manual testing, test automation, API validation, defect management, and release testing across web and mobile products. I enjoy collaborating with development and product teams to improve quality throughout the software development lifecycle.</p>
-              <div className="principles">
-                {[["01", "Think like a user"], ["02", "Test with intent"], ["03", "Communicate clearly"]].map(([n, text]) => <div key={n}><span>{n}</span><strong>{text}</strong></div>)}
-              </div>
+        <section id="about" className="section">
+          <Reveal>
+            <SectionHeading label="01 / About" title="Quality backed by evidence." copy="I help teams release reliable software by identifying risks early, designing practical test coverage and reporting defects clearly. My experience includes functional, regression, exploratory, API, automation and performance testing across web and mobile products." />
+            <div className="achievement-grid">
+              {achievements.map(([value, label]) => <article key={label}><strong>{value}</strong><span>{label}</span></article>)}
             </div>
-          </div>
+          </Reveal>
         </section>
 
         <section id="skills" className="section section-alt">
-          <SectionHeading eyebrow="02 / Capabilities" title="A practical toolkit for dependable software." description="Hands-on experience across the full quality lifecycle—from understanding requirements to validating releases." />
-          <div className="skills-grid">
-            {skillGroups.map((group, index) => (
-              <article className="skill-card" key={group.title}>
-                <span className="card-number">0{index + 1}</span>
-                <h3>{group.title}</h3>
-                <div className="skill-tags">{group.items.map((item) => <span key={item}>{item}</span>)}</div>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section id="experience" className="section">
-          <SectionHeading eyebrow="03 / Experience" title="Building quality into every stage." />
-          <div className="timeline">
-            {roles.map((role, index) => (
-              <article className="timeline-item" key={`${role.company}-${role.role}`}>
-                <div className="timeline-marker"><span>{String(index + 1).padStart(2, "0")}</span></div>
-                <div className="timeline-date">{role.date}</div>
-                <div className="timeline-content">
-                  <h3>{role.role}</h3><p className="company">{role.company}</p>
-                  <ul>{role.points.map((point) => <li key={point}><Check size={15} />{point}</li>)}</ul>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section id="projects" className="section section-alt">
-          <SectionHeading eyebrow="04 / Selected work" title="Products tested with care and context." description="A selection of platforms where quality, usability and dependable behavior matter." />
-          <div className="projects-list">
-            {projects.map((project) => (
-              <article className="project-card" key={project.name}>
-                <div className="project-visual">
-                  <span>{project.index}</span>
-                  <div className="test-window" aria-hidden="true"><div className="window-top"><i /><i /><i /></div><div className="window-content"><b /><b /><b /><b /></div></div>
-                </div>
-                <div className="project-copy">
-                  <p>{project.type}</p><h3>{project.name}</h3><span>{project.description}</span>
-                  <div className="project-note">Case study details available on request</div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="section process-section" aria-labelledby="process-title">
-          <SectionHeading eyebrow="05 / QA Process" title="A clear path from requirement to release." />
-          <div className="process-flow" id="process-title">
-            {["Requirement Analysis", "Test Planning", "Test Execution", "Defect Reporting", "Retesting", "Release Validation"].map((step, index, items) => (
-              <div className="process-step" key={step}><span>{String(index + 1).padStart(2, "0")}</span><strong>{step}</strong>{index < items.length - 1 ? <ChevronRight size={19} /> : null}</div>
-            ))}
-          </div>
-        </section>
-
-        <section id="education" className="section section-alt">
-          <SectionHeading eyebrow="06 / Education" title="A foundation built for technology and quality." />
-          <div className="education-grid">
-            <article className="education-feature"><GraduationCap size={28} /><p>2017 — 2021</p><h3>Bachelor of Science in Software Engineering</h3><span>Daffodil International University of Bangladesh</span></article>
-            <div className="credentials">
-              <article><span>2022</span><div><h3>Cisco Certified Network Associate</h3><p>Professional certification</p></div></article>
-              <article><span>2024</span><div><h3>SQA and Cyber Security Course</h3><p>IT Training BD</p></div></article>
+          <Reveal>
+            <SectionHeading label="02 / Skills" title="Coverage across the quality lifecycle." />
+            <div className="skills-grid">
+              {skillGroups.map((group) => <article className="skill-card" key={group.title}><span className="card-number">{group.number}</span><h3>{group.title}</h3><div className="tag-list">{group.items.map((item) => <span key={item}>{item}</span>)}</div></article>)}
             </div>
+          </Reveal>
+        </section>
+
+        <section id="projects" className="section">
+          <Reveal><SectionHeading label="03 / Featured Projects" title="Test work you can inspect." copy="Practical QA repositories with traceable coverage, reporting and execution evidence." /></Reveal>
+          <div className="projects-grid">
+            {projects.map((project) => (
+              <Reveal key={project.title} className="project-reveal">
+                <article className="project-card">
+                  <div className="project-top"><span>{project.index}</span><p>{project.category}</p><Github /></div>
+                  <h3>{project.title}</h3><p className="project-description">{project.description}</p>
+                  <div className="project-evidence"><small>Key evidence</small><ul>{project.evidence.map((item) => <li key={item}><Check />{item}</li>)}</ul></div>
+                  <div className="tag-list">{project.technologies.map((item) => <span key={item}>{item}</span>)}</div>
+                  <Button asChild variant="outline" className="repo-button"><a href={project.repository} target="_blank" rel="noreferrer">View Repository<ArrowUpRight /></a></Button>
+                </article>
+              </Reveal>
+            ))}
           </div>
+        </section>
+
+        <section id="experience" className="section section-alt">
+          <Reveal>
+            <SectionHeading label="04 / Experience" title="A track record of dependable delivery." />
+            <div className="timeline">
+              {experience.map(([role, company, date], index) => <article className="timeline-item" key={`${role}-${company}`}><div className="timeline-node"><span>{String(index + 1).padStart(2, "0")}</span></div><div className="timeline-copy"><p>{date}</p><h3>{role}</h3><strong>{company}</strong></div></article>)}
+            </div>
+            <div className="education-block">
+              <div><p className="eyebrow"><span />Education</p><h3>BSc in Software Engineering</h3><p>Daffodil International University · 2017–2021</p></div>
+              <div><p className="eyebrow"><span />Certifications</p><h3>Software Quality Assurance and Cyber Security</h3><p>IT Training BD · 2024</p><h3>CCNA Training</h3><p>2022</p></div>
+            </div>
+          </Reveal>
         </section>
 
         <section id="contact" className="section contact-section">
-          <div className="contact-copy">
-            <SectionHeading eyebrow="07 / Contact" title="Let’s build software people can trust." />
-            <p>Have a QA opportunity or a product that needs thoughtful testing? I’d be glad to hear about it.</p>
-            <div className="contact-links">
-              <a href="mailto:sourovsqa@gmail.com"><Mail size={18} /><span><small>Email</small>sourovsqa@gmail.com</span></a>
-              <a href="tel:+8801737584897"><Phone size={18} /><span><small>Phone</small>+880 1737 584897</span></a>
-              <a href="https://www.linkedin.com/in/abidursourov" target="_blank" rel="noreferrer"><Linkedin size={18} /><span><small>LinkedIn</small>/in/abidursourov</span></a>
-              <a href="https://github.com/abidursourov97" target="_blank" rel="noreferrer"><Github size={18} /><span><small>GitHub</small>/abidursourov97</span></a>
+          <Reveal>
+            <SectionHeading label="05 / Contact" title="Let’s build reliable software." copy="I’m currently open to Software Quality Assurance opportunities, including remote and on-site roles." />
+            <div className="contact-actions">
+              <Button asChild size="lg"><a href="mailto:sourovsqa@gmail.com"><Mail />Email</a></Button>
+              <Button asChild size="lg" variant="outline"><a href="tel:+8801737584897"><Phone />Phone</a></Button>
+              <Button asChild size="lg" variant="outline"><a href="https://www.linkedin.com/in/abidursourov" target="_blank" rel="noreferrer"><Linkedin />LinkedIn</a></Button>
+              <Button asChild size="lg" variant="outline"><a href="https://github.com/abidursourov97" target="_blank" rel="noreferrer"><Github />GitHub</a></Button>
             </div>
-          </div>
-          <form className="contact-form" onSubmit={submitContact}>
-            <div className="field-row"><label>Name<input name="name" autoComplete="name" required placeholder="Your name" /></label><label>Email<input name="email" type="email" autoComplete="email" required placeholder="you@company.com" /></label></div>
-            <label>Subject<input name="subject" required placeholder="What would you like to discuss?" /></label>
-            <label>Message<textarea name="message" required rows={5} placeholder="Tell me about the opportunity or project..." /></label>
-            <button className="button button-primary submit-button" type="submit">Send Message <Send size={17} /></button>
-          </form>
+          </Reveal>
         </section>
       </main>
 
-      <footer>
-        <div className="footer-brand"><span className="brand-mark">AS</span><p>Designed to demonstrate quality, clarity and attention to detail.</p></div>
-        <div className="footer-links"><ExternalLink href="https://www.linkedin.com/in/abidursourov" label="LinkedIn"><Linkedin size={18} /></ExternalLink><ExternalLink href="https://github.com/abidursourov97" label="GitHub"><Github size={18} /></ExternalLink><a className="icon-link" href="mailto:sourovsqa@gmail.com" aria-label="Email"><Mail size={18} /></a></div>
-        <p>© {new Date().getFullYear()} Abidur Rahman Sourov</p>
-      </footer>
+      <footer><a className="brand" href="#top"><span className="brand-mark">AR</span><span className="brand-name">Abidur Rahman Sourov</span></a><p>© {new Date().getFullYear()} · Software Quality Assurance Engineer</p><a href="mailto:sourovsqa@gmail.com">sourovsqa@gmail.com</a></footer>
     </div>
   );
 }
