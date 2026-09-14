@@ -22,9 +22,9 @@ const navItems = ["About", "Skills", "Projects", "Experience", "Contact"];
 
 const achievements = [
   ["3.5+", "Years of QA Experience"],
-  ["96", "Documented Issues"],
+  ["199+", "Documented Issues"],
   ["4", "Testing Coverage Layers"],
-  ["14", "Public GitHub Repositories"],
+  ["15", "Public GitHub Repositories"],
 ];
 
 const skillGroups = [
@@ -74,9 +74,19 @@ const skillGroups = [
   },
 ];
 
-const projects = [
+type Project = {
+  index: string;
+  title: string;
+  category: string;
+  description: string;
+  evidence: string[];
+  technologies: string[];
+  repository: string;
+};
+
+const automationProjects: Project[] = [
   {
-    index: "01",
+    index: "A01",
     title: "Allred’s Playwright Automation",
     category: "End-to-end automation",
     description:
@@ -92,22 +102,22 @@ const projects = [
     repository: "https://github.com/abidursourov97/allreds-playwright-automation",
   },
   {
-    index: "02",
-    title: "Plastics Inc. B2B Manual Testing",
-    category: "Manual QA case study",
+    index: "A02",
+    title: "Postman & Newman API Automation",
+    category: "Data-driven API testing",
     description:
-      "A detailed manual QA project covering functional, UI, UX, validation, cart, order and access-control testing.",
+      "A REST API testing workflow using Postman collections, environments, CSV-driven execution, Newman CLI and HTML reporting.",
     evidence: [
-      "96 documented issues",
-      "21 high-priority issues",
-      "48 medium-priority issues",
-      "26 low-priority issues",
+      "Data-driven CSV execution",
+      "Environment variables",
+      "Newman command-line runs",
+      "HTML test reports",
     ],
-    technologies: ["Manual Testing", "Test Cases", "Bug Reporting", "Regression Testing"],
-    repository: "https://github.com/abidursourov97/Plastics_Manual-Testing-Bug_Report",
+    technologies: ["Postman", "Newman", "REST API", "JavaScript"],
+    repository: "https://github.com/abidursourov97/Postman-Newman-API-Testing",
   },
   {
-    index: "03",
+    index: "A03",
     title: "DummyJSON API Testing",
     category: "API test suite",
     description:
@@ -123,7 +133,7 @@ const projects = [
     repository: "https://github.com/abidursourov97/DummyJSON-API-Testing-Portfolio",
   },
   {
-    index: "04",
+    index: "A04",
     title: "JMeter Performance Testing",
     category: "Performance validation",
     description:
@@ -131,6 +141,85 @@ const projects = [
     evidence: ["Load-test scenarios", "Response-time analysis", "Stability validation"],
     technologies: ["Apache JMeter", "Performance Testing", "Load Testing"],
     repository: "https://github.com/abidursourov97/Performance-Testing-Project-",
+  },
+];
+
+const manualProjects: Project[] = [
+  {
+    index: "M01",
+    title: "Plastics Inc. B2B Manual Testing",
+    category: "B2B ecommerce QA",
+    description:
+      "Manual testing of a B2B web application across functional, UI/UX, validation, cart, order, account and access-control workflows.",
+    evidence: [
+      "96 documented issues",
+      "21 high-priority issues",
+      "48 medium-priority issues",
+      "26 low-priority issues",
+    ],
+    technologies: ["Manual Testing", "Bug Reports", "Regression", "Excel"],
+    repository: "https://github.com/abidursourov97/Plastics_Manual-Testing-Bug_Report",
+  },
+  {
+    index: "M02",
+    title: "Nudraulix Manual Testing",
+    category: "Full workflow validation",
+    description:
+      "Structured manual testing across product discovery, authentication, checkout, order management, favourites, contacts and browser compatibility.",
+    evidence: [
+      "103 documented issues",
+      "43 high-priority issues",
+      "36 medium-priority issues",
+      "24 low-priority issues",
+    ],
+    technologies: ["Functional Testing", "UI/UX", "Regression", "Browser Testing"],
+    repository: "https://github.com/abidursourov97/Nudrailix_Manual-Testing-Bug_Report",
+  },
+  {
+    index: "M03",
+    title: "Steven Engineering Functional Testing",
+    category: "Multi-cycle manual QA",
+    description:
+      "Manual functional testing delivered across three cycles, covering account, dashboard, product, cart, checkout and order-history workflows.",
+    evidence: [
+      "3 testing cycles",
+      "Functional and UI validation",
+      "Browser compatibility checks",
+      "Regression and bug verification",
+    ],
+    technologies: ["Manual Testing", "Test Documentation", "Regression", "DevTools"],
+    repository:
+      "https://github.com/abidursourov97/Steven-Engineering-Manual-Functional-Testing-Report",
+  },
+  {
+    index: "M04",
+    title: "RHS Manual Testing",
+    category: "Web application QA",
+    description:
+      "Excel-based bug reporting and manual QA across authentication, dashboard, product, cart, checkout, order and responsive workflows.",
+    evidence: [
+      "Functional testing",
+      "UI/UX validation",
+      "Workflow testing",
+      "Reproducible bug reports",
+    ],
+    technologies: ["Manual Testing", "Bug Reporting", "UI/UX", "Excel"],
+    repository: "https://github.com/abidursourov97/RHS-Manual-Testing-Bug-Reports",
+  },
+  {
+    index: "M05",
+    title: "BongoBD Manual Testing",
+    category: "OTT platform QA",
+    description:
+      "A complete QA practice portfolio for a video-streaming platform, connecting feature analysis, mind maps, test planning and test documentation.",
+    evidence: [
+      "Test plan documentation",
+      "Feature and workflow mind maps",
+      "Spreadsheet test coverage",
+      "Bug-report templates",
+    ],
+    technologies: ["Test Planning", "Mind Mapping", "Test Cases", "Bug Reports"],
+    repository: "https://github.com/abidursourov97/bongobd-manual-testing",
   },
 ];
 
@@ -177,6 +266,44 @@ function SectionHeading({ label, title, copy }: { label: string; title: string; 
       <h2>{title}</h2>
       {copy ? <p className="section-copy">{copy}</p> : null}
     </div>
+  );
+}
+
+function ProjectCard({ project }: { project: Project }) {
+  return (
+    <Reveal className="project-reveal">
+      <article className="project-card">
+        <div className="project-top">
+          <span>{project.index}</span>
+          <p>{project.category}</p>
+          <Github />
+        </div>
+        <h3>{project.title}</h3>
+        <p className="project-description">{project.description}</p>
+        <div className="project-evidence">
+          <small>Key evidence</small>
+          <ul>
+            {project.evidence.map((item) => (
+              <li key={item}>
+                <Check />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="tag-list">
+          {project.technologies.map((item) => (
+            <span key={item}>{item}</span>
+          ))}
+        </div>
+        <Button asChild variant="outline" className="repo-button">
+          <a href={project.repository} target="_blank" rel="noreferrer">
+            View Repository
+            <ArrowUpRight />
+          </a>
+        </Button>
+      </article>
+    </Reveal>
   );
 }
 
@@ -383,47 +510,51 @@ export default function Portfolio() {
         <section id="projects" className="section">
           <Reveal>
             <SectionHeading
-              label="03 / Featured Projects"
-              title="Test work you can inspect."
-              copy="Practical QA repositories with traceable coverage, reporting and execution evidence."
+              label="03 / Projects"
+              title="Quality work backed by evidence."
+              copy="Explore hands-on automation and manual testing projects with traceable coverage, documentation and execution results."
             />
           </Reveal>
-          <div className="projects-grid">
-            {projects.map((project) => (
-              <Reveal key={project.title} className="project-reveal">
-                <article className="project-card">
-                  <div className="project-top">
-                    <span>{project.index}</span>
-                    <p>{project.category}</p>
-                    <Github />
-                  </div>
-                  <h3>{project.title}</h3>
-                  <p className="project-description">{project.description}</p>
-                  <div className="project-evidence">
-                    <small>Key evidence</small>
-                    <ul>
-                      {project.evidence.map((item) => (
-                        <li key={item}>
-                          <Check />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="tag-list">
-                    {project.technologies.map((item) => (
-                      <span key={item}>{item}</span>
-                    ))}
-                  </div>
-                  <Button asChild variant="outline" className="repo-button">
-                    <a href={project.repository} target="_blank" rel="noreferrer">
-                      View Repository
-                      <ArrowUpRight />
-                    </a>
-                  </Button>
-                </article>
-              </Reveal>
-            ))}
+          <div className="project-group">
+            <Reveal className="project-group-reveal">
+              <div className="project-group-heading">
+                <div>
+                  <p className="project-group-kicker">Automation &amp; Technical Testing</p>
+                  <h3>Repeatable checks for faster, safer releases.</h3>
+                  <p>
+                    UI, API and performance test projects built around maintainable workflows and
+                    clear results.
+                  </p>
+                </div>
+                <span className="project-count">04 Projects</span>
+              </div>
+            </Reveal>
+            <div className="projects-grid">
+              {automationProjects.map((project) => (
+                <ProjectCard key={project.title} project={project} />
+              ))}
+            </div>
+          </div>
+
+          <div className="project-group">
+            <Reveal className="project-group-reveal">
+              <div className="project-group-heading">
+                <div>
+                  <p className="project-group-kicker">Manual Testing</p>
+                  <h3>Structured investigation with actionable reporting.</h3>
+                  <p>
+                    End-to-end test coverage, documented defects and QA artefacts across real web
+                    product workflows.
+                  </p>
+                </div>
+                <span className="project-count">05 Projects</span>
+              </div>
+            </Reveal>
+            <div className="projects-grid">
+              {manualProjects.map((project) => (
+                <ProjectCard key={project.title} project={project} />
+              ))}
+            </div>
           </div>
         </section>
 

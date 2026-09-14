@@ -574,6 +574,50 @@ button:focus-visible {
   color: var(--muted-foreground);
   font-size: 0.65rem;
 }
+.project-group + .project-group {
+  margin-top: clamp(5rem, 9vw, 8rem);
+}
+.project-group-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 3rem;
+  margin-bottom: 1.4rem;
+  padding: 0 0 1.7rem;
+  border-bottom: 1px solid var(--border);
+}
+.project-group-heading > div {
+  max-width: 47rem;
+}
+.project-group-kicker {
+  margin: 0 0 0.8rem;
+  color: var(--primary);
+  font: 700 0.65rem var(--font-display);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.project-group-heading h3 {
+  margin: 0;
+  font: 600 clamp(1.55rem, 3.2vw, 2.55rem) / 1.15 var(--font-display);
+  letter-spacing: -0.035em;
+}
+.project-group-heading > div > p:last-child {
+  max-width: 42rem;
+  margin: 0.8rem 0 0;
+  color: var(--muted-foreground);
+  font-size: 0.78rem;
+  line-height: 1.7;
+}
+.project-count {
+  flex: 0 0 auto;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid color-mix(in oklab, var(--primary) 35%, var(--border));
+  background: color-mix(in oklab, var(--primary) 7%, transparent);
+  color: var(--primary);
+  font: 700 0.62rem var(--font-display);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -1013,6 +1057,11 @@ footer > a:last-child:hover {
   }
   .project-card {
     min-height: 0;
+  }
+  .project-group-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1.2rem;
   }
   .project-evidence ul {
     columns: 1;
