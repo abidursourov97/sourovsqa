@@ -420,22 +420,21 @@ export default function Portfolio() {
             </div>
           </div>
           <div className="portrait-wrap">
-            <div className="portrait-code" aria-hidden="true">
-              TEST / VERIFY / RELEASE
-            </div>
             <div className="portrait-frame">
-              <img className="portrait-photo" src={profilePhotoUrl} alt="Abidur Rahman Sourov" />
+              <img
+                className="portrait-photo"
+                src={profilePhotoUrl}
+                alt="Abidur Rahman Sourov"
+                width="1200"
+                height="1200"
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
+              />
               <div>
                 <small>Software QA Engineer</small>
                 <strong>Abidur Rahman Sourov</strong>
               </div>
-            </div>
-            <div className="quality-chip">
-              <Check />
-              <span>
-                <strong>Quality first</strong>
-                <small>Every release. Every path.</small>
-              </span>
             </div>
           </div>
         </section>

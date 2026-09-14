@@ -288,63 +288,35 @@ button:focus-visible {
 }
 .portrait-wrap {
   position: relative;
-  width: min(100%, 27rem);
+  width: min(100%, 28rem);
   justify-self: center;
-}
-.portrait-wrap::before {
-  content: "";
-  position: absolute;
-  inset: -1rem 1rem 1rem -1rem;
-  border: 1px solid var(--border);
-  border-radius: 1rem;
-  background-image:
-    linear-gradient(var(--grid-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-  background-size: 30px 30px;
-}
-.portrait-code {
-  position: absolute;
-  z-index: 2;
-  top: 1rem;
-  left: 1rem;
-  color: var(--primary);
-  font: 500 0.58rem var(--font-display);
 }
 .portrait-frame {
   position: relative;
-  min-height: 31rem;
+  aspect-ratio: 6 / 7;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 1.8rem;
-  border: 1px solid var(--border);
-  border-radius: 1rem;
-  background: linear-gradient(
-    145deg,
-    color-mix(in oklab, var(--secondary) 94%, var(--primary)),
-    var(--surface)
-  );
-  box-shadow: var(--shadow);
+  padding: 1.7rem;
+  border: 1px solid color-mix(in oklab, var(--primary) 30%, var(--border));
+  border-radius: 1.15rem;
+  background: var(--surface);
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--primary) 6%, transparent),
+    0 28px 80px oklch(0.03 0.01 165 / 55%);
   overflow: hidden;
-}
-.portrait-frame::before {
-  content: "";
-  position: absolute;
-  width: 72%;
-  aspect-ratio: 1;
-  top: 18%;
-  left: 50%;
-  transform: translateX(-50%);
-  border: 1px solid var(--border);
-  border-radius: 50%;
-  box-shadow: 0 0 50px color-mix(in oklab, var(--primary) 8%, transparent);
 }
 .portrait-frame::after {
   content: "";
   position: absolute;
   z-index: 1;
-  inset: 58% 0 0;
-  background: linear-gradient(transparent, color-mix(in oklab, var(--background) 78%, transparent));
+  inset: auto 0 0;
+  height: 38%;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    color-mix(in oklab, var(--background) 84%, transparent)
+  );
   pointer-events: none;
 }
 .portrait-photo {
@@ -361,6 +333,7 @@ button:focus-visible {
   z-index: 3;
   display: flex;
   flex-direction: column;
+  text-shadow: 0 2px 14px oklch(0.03 0.01 165 / 75%);
 }
 .portrait-frame small {
   color: var(--primary);
@@ -370,36 +343,6 @@ button:focus-visible {
 .portrait-frame strong {
   margin-top: 0.4rem;
   font: 600 1rem var(--font-display);
-}
-.quality-chip {
-  position: absolute;
-  right: -1.25rem;
-  bottom: 3rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.8rem 0.9rem;
-  border: 1px solid var(--border);
-  border-radius: 0.75rem;
-  background: var(--card);
-  backdrop-filter: blur(14px);
-  box-shadow: var(--shadow);
-}
-.quality-chip svg {
-  width: 1.05rem;
-  color: var(--primary);
-}
-.quality-chip span {
-  display: flex;
-  flex-direction: column;
-}
-.quality-chip strong {
-  font-size: 0.7rem;
-}
-.quality-chip small {
-  margin-top: 0.1rem;
-  color: var(--muted-foreground);
-  font-size: 0.58rem;
 }
 
 .section {
@@ -953,9 +896,6 @@ footer > a:last-child:hover {
     grid-template-columns: 1fr 0.75fr;
     gap: 2rem;
   }
-  .portrait-frame {
-    min-height: 25rem;
-  }
   .achievement-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1013,12 +953,6 @@ footer > a:last-child:hover {
   .portrait-wrap {
     width: calc(100% - 1.25rem);
     margin-top: 1.5rem;
-  }
-  .portrait-frame {
-    min-height: 28rem;
-  }
-  .quality-chip {
-    right: -0.6rem;
   }
   .section,
   .section-alt {
