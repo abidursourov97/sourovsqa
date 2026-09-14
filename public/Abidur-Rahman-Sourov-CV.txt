@@ -1,0 +1,56 @@
+ABIDUR RAHMAN SOUROV
+Software Quality Assurance Engineer
+Bangladesh | +8801737584897 | sourovsqa@gmail.com
+LinkedIn: https://www.linkedin.com/in/abidursourov
+GitHub: https://github.com/abidursourov97
+
+PROFILE
+Software Quality Assurance Engineer with 3.5+ years of experience in manual and automated testing across web, mobile, API, and AI-powered applications.
+
+SKILLS
+Testing: Manual, Functional, Regression, Smoke, Exploratory, Test Planning, Test Case Design, Bug Reporting, Release Validation
+Automation: Selenium, Playwright, API Automation
+API & Performance: Postman, REST API Testing, Apache JMeter
+Tools: Jira, GitLab, Trello, Microsoft Excel, Microsoft Teams, GitHub, Visual Studio
+Programming: Java, C, SQL
+Methodologies: Agile, Scrum, SDLC, AI-Assisted Testing
+
+EXPERIENCE
+QA Engineer, Contractual — EasyAsk | February 2025 - Present
+- Manual, regression and API testing for AI-powered e-commerce applications
+- Test-case design and execution
+- Defect documentation and tracking using Jira
+- Agile collaboration and release validation
+- Testing-process improvement
+
+SQA Engineer — Blue Solutions Ltd. | January 2023 - January 2025
+- Web and mobile application testing
+- Functional, regression and API testing
+- Postman and Playwright testing
+- Defect tracking through Jira and Trello
+- Collaboration with developers and product teams
+- QA-process and release-workflow improvement
+
+Trainee SQA Engineer — Blue Solutions Ltd. | April 2022 - January 2023
+- Manual, regression and API testing
+- Test-case preparation and execution
+- Defect identification and documentation
+- Agile team collaboration
+- Release validation
+
+Junior Network Officer Intern — Gazi Network | November 2021 - February 2022
+- Daily transmission-link monitoring
+- Server-health checking
+- Router and switch configuration
+
+SELECTED PROJECTS
+Steven Engineering — Enterprise Web Application Testing
+Allred’s — B2B eCommerce Platform
+BongoBD — OTT Streaming Platform
+
+EDUCATION & CERTIFICATION
+Bachelor of Science in Software Engineering
+Daffodil International University of Bangladesh | 2017 - 2021
+
+Cisco Certified Network Associate | 2022
+SQA and Cyber Security Course, IT Training BD | 2024
