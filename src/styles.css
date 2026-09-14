@@ -339,17 +339,25 @@ button:focus-visible {
   border-radius: 50%;
   box-shadow: 0 0 50px color-mix(in oklab, var(--primary) 8%, transparent);
 }
-.portrait-initials {
+.portrait-frame::after {
+  content: "";
   position: absolute;
-  top: 48%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: color-mix(in oklab, var(--primary) 40%, transparent);
-  font: 700 clamp(7rem, 13vw, 10rem) var(--font-display);
+  z-index: 1;
+  inset: 42% 0 0;
+  background: linear-gradient(transparent, color-mix(in oklab, var(--background) 92%, transparent));
+  pointer-events: none;
+}
+.portrait-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
 }
 .portrait-scan {
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   top: 8%;
   bottom: 24%;
   left: 50%;
@@ -362,6 +370,7 @@ button:focus-visible {
 }
 .portrait-frame > div {
   position: relative;
+  z-index: 3;
   display: flex;
   flex-direction: column;
 }

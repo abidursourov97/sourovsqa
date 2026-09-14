@@ -16,6 +16,7 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 
 import { Button } from "@/components/ui/button";
 const cvUrl = `${import.meta.env.BASE_URL}Abidur-Rahman-Sourov-CV.pdf`;
+const profilePhotoUrl = `${import.meta.env.BASE_URL}profile-photo.jpg`;
 
 const navItems = ["About", "Skills", "Projects", "Experience", "Contact"];
 
@@ -291,13 +292,13 @@ export default function Portfolio() {
               </div>
             </div>
           </div>
-          <div className="portrait-wrap" aria-label="AR profile placeholder">
+          <div className="portrait-wrap">
             <div className="portrait-code" aria-hidden="true">
               TEST / VERIFY / RELEASE
             </div>
             <div className="portrait-frame">
+              <img className="portrait-photo" src={profilePhotoUrl} alt="Abidur Rahman Sourov" />
               <span className="portrait-scan" aria-hidden="true" />
-              <span className="portrait-initials">AR</span>
               <div>
                 <small>Software QA Engineer</small>
                 <strong>Abidur Rahman Sourov</strong>
