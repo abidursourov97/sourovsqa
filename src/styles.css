@@ -92,7 +92,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 .icon-button:hover, .icon-link:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-2px); }
 .menu-button { display: none; }
 
-.hero-section { min-height: 96vh; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(22rem, .85fr); align-items: center; gap: clamp(3rem, 7vw, 8rem); max-width: 90rem; margin: 0 auto; padding: 9.5rem 5vw 5rem; position: relative; }
+.hero-section { min-height: min(54rem, 92vh); display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(22rem, .85fr); align-items: center; gap: clamp(3rem, 7vw, 8rem); max-width: 90rem; margin: 0 auto; padding: 9.5rem 5vw 5rem; position: relative; }
 .hero-section::before { content: ""; position: absolute; inset: 5rem 0 0; z-index: -1; background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px); background-size: 54px 54px; mask-image: linear-gradient(to bottom, black, transparent 85%); }
 .status-badge { display: inline-flex; align-items: center; gap: .55rem; color: var(--primary); font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; }
 .status-badge span { width: .48rem; aspect-ratio: 1; border-radius: 50%; background: var(--primary); box-shadow: 0 0 0 5px color-mix(in oklab, var(--primary) 14%, transparent); animation: pulse 2.4s infinite; }
