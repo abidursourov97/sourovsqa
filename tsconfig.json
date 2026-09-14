@@ -1,5 +1,11 @@
 {
-  "include": ["src/**/*.ts", "src/**/*.tsx", "vite.config.ts", "eslint.config.js"],
+  "include": [
+    "src/main.tsx",
+    "src/routes/index.tsx",
+    "src/components/ui/button.tsx",
+    "src/lib/utils.ts",
+    "vite.config.ts"
+  ],
   "compilerOptions": {
     "target": "ES2022",
     "jsx": "react-jsx",
