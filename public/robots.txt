@@ -12,3 +12,5 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+Sitemap: https://abidursourov97.github.io/sourovsqa/sitemap.xml

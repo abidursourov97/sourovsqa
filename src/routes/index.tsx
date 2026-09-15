@@ -24,7 +24,7 @@ const achievements = [
   ["3.5+", "Years of QA Experience"],
   ["199+", "Documented Issues"],
   ["4", "Testing Coverage Layers"],
-  ["15", "Public GitHub Repositories"],
+  ["15+", "Public GitHub Repositories"],
 ];
 
 const skillGroups = [
@@ -267,10 +267,45 @@ const manualProjects: Project[] = [
 ];
 
 const experience = [
-  ["QA Engineer, Contractual", "EasyAsk", "February 2025 – Present"],
-  ["Software Quality Assurance Engineer", "Blue Solutions", "January 2023 – January 2025"],
-  ["Trainee Software Quality Assurance Engineer", "Blue Solutions", "April 2022 – January 2023"],
-  ["Junior Network Officer Intern", "Gazi Network", "November 2021 – February 2022"],
+  {
+    role: "QA Engineer (Contract)",
+    company: "EasyAsk",
+    date: "February 2025 – Present",
+    details: [
+      "Perform manual, regression and API testing for AI-powered eCommerce applications.",
+      "Design and execute test cases, track defects in Jira and validate releases.",
+      "Collaborate with cross-functional teams in an Agile/Scrum environment.",
+    ],
+  },
+  {
+    role: "Software Quality Assurance Engineer",
+    company: "Blue Solutions",
+    date: "January 2023 – January 2025",
+    details: [
+      "Designed and executed test cases for web and mobile applications.",
+      "Performed functional, regression and API testing using Postman and Playwright.",
+      "Tracked defects in Jira and Trello and supported release validation.",
+    ],
+  },
+  {
+    role: "Trainee Software Quality Assurance Engineer",
+    company: "Blue Solutions",
+    date: "April 2022 – January 2023",
+    details: [
+      "Performed manual, regression and API testing for eCommerce web applications.",
+      "Created and executed test cases and documented reproducible defects in Jira.",
+      "Supported Agile delivery, release validation and testing-process improvements.",
+    ],
+  },
+  {
+    role: "Junior Network Officer Intern",
+    company: "Gazi Network",
+    date: "November 2021 – February 2022",
+    details: [
+      "Monitored daily transmission links and server health.",
+      "Supported router and switch configuration activities.",
+    ],
+  },
 ];
 
 function Reveal({ children, className = "" }: { children: ReactNode; className?: string }) {
@@ -660,7 +695,7 @@ export default function Portfolio() {
               title="A track record of dependable delivery."
             />
             <div className="timeline">
-              {experience.map(([role, company, date], index) => (
+              {experience.map(({ role, company, date, details }, index) => (
                 <article className="timeline-item" key={`${role}-${company}`}>
                   <div className="timeline-node">
                     <span>{String(index + 1).padStart(2, "0")}</span>
@@ -669,6 +704,11 @@ export default function Portfolio() {
                     <p>{date}</p>
                     <h3>{role}</h3>
                     <strong>{company}</strong>
+                    <ul className="timeline-details">
+                      {details.map((detail) => (
+                        <li key={detail}>{detail}</li>
+                      ))}
+                    </ul>
                   </div>
                 </article>
               ))}

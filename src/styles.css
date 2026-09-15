@@ -162,8 +162,9 @@ button:focus-visible {
 .main-nav > a:hover {
   color: var(--primary);
 }
-.nav-download {
+.main-nav > a.nav-download {
   margin-left: 0.4rem;
+  color: var(--primary-foreground);
 }
 .menu-button {
   display: none;
@@ -506,7 +507,7 @@ button:focus-visible {
   font-size: 0.65rem;
 }
 .project-group + .project-group {
-  margin-top: clamp(5rem, 9vw, 8rem);
+  margin-top: clamp(3.75rem, 7vw, 6rem);
 }
 .project-group-heading {
   display: flex;
@@ -664,7 +665,7 @@ button:focus-visible {
 .live-project-description {
   margin: 1rem 0 1.2rem;
   color: var(--muted-foreground);
-  font-size: 0.75rem;
+  font-size: 0.81rem;
   line-height: 1.7;
 }
 .live-test-types {
@@ -678,7 +679,7 @@ button:focus-visible {
   border: 1px solid var(--border);
   background: color-mix(in oklab, var(--primary) 4%, transparent);
   color: var(--muted-foreground);
-  font-size: 0.58rem;
+  font-size: 0.64rem;
 }
 .visit-site-link {
   width: fit-content;
@@ -706,7 +707,7 @@ button:focus-visible {
 .project-card {
   position: relative;
   height: 100%;
-  min-height: 35rem;
+  min-height: 31rem;
   display: flex;
   flex-direction: column;
   padding: clamp(1.4rem, 3vw, 2.2rem);
@@ -791,7 +792,7 @@ button:focus-visible {
   gap: 0.45rem;
   margin-bottom: 0.55rem;
   color: var(--muted-foreground);
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   line-height: 1.5;
 }
 .project-evidence svg {
@@ -848,6 +849,19 @@ button:focus-visible {
   margin-top: 0.35rem;
   color: var(--primary);
   font-size: 0.76rem;
+}
+.timeline-details {
+  display: grid;
+  gap: 0.5rem;
+  max-width: 58rem;
+  margin: 1rem 0 0;
+  padding-left: 1.05rem;
+  color: var(--muted-foreground);
+  font-size: 0.78rem;
+  line-height: 1.65;
+}
+.timeline-details li::marker {
+  color: var(--primary);
 }
 .education-block {
   display: grid;
@@ -1038,8 +1052,9 @@ footer > a:last-child:hover {
     padding: 0.9rem 0;
     border-bottom: 1px solid var(--border);
   }
-  .nav-download {
+  .main-nav > a.nav-download {
     margin: 1rem 0 0;
+    border-bottom: 0;
   }
   .hero-section {
     grid-template-columns: 1fr 0.75fr;
