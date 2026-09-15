@@ -490,8 +490,31 @@ button:focus-visible {
   color: var(--primary);
   font: 600 0.65rem var(--font-display);
 }
+.skill-card-heading {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.skill-card-icon {
+  display: grid;
+  width: 2.35rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid color-mix(in oklab, var(--primary) 32%, var(--border));
+  border-radius: 0.7rem;
+  background: color-mix(in oklab, var(--primary) 8%, transparent);
+  color: var(--primary);
+}
+.skill-card-icon svg {
+  width: 1.05rem;
+  height: 1.05rem;
+}
 .skill-card h3 {
-  margin: 1.7rem 0 1.2rem;
+  position: relative;
+  z-index: 1;
+  margin: 1.25rem 0 1.2rem;
   font: 600 1.25rem var(--font-display);
 }
 .tag-list {
@@ -505,6 +528,32 @@ button:focus-visible {
   background: color-mix(in oklab, var(--primary) 4%, transparent);
   color: var(--muted-foreground);
   font-size: 0.65rem;
+}
+.skill-card .tag-list {
+  position: relative;
+  z-index: 1;
+}
+.tag-list .skill-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+  padding: 0.44rem 0.58rem;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+.tag-list .skill-tag svg {
+  width: 0.78rem;
+  height: 0.78rem;
+  flex: 0 0 auto;
+  color: var(--primary);
+  stroke-width: 1.9;
+}
+.tag-list .skill-tag:hover {
+  border-color: color-mix(in oklab, var(--primary) 45%, var(--border));
+  background: color-mix(in oklab, var(--primary) 9%, transparent);
+  color: var(--foreground);
 }
 .project-group + .project-group {
   margin-top: clamp(3.75rem, 7vw, 6rem);

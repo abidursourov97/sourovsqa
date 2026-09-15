@@ -1,16 +1,43 @@
 import {
   ArrowDown,
   ArrowUpRight,
+  Bot,
+  Braces,
+  Bug,
   Check,
+  ClipboardCheck,
+  ClipboardList,
+  Code2,
+  Coffee,
+  Database,
   Download,
+  Gauge,
+  GitBranch,
+  GitPullRequest,
   Github,
+  Layers3,
   Linkedin,
+  ListChecks,
   Mail,
   MapPin,
   Menu,
+  Network,
   Phone,
+  PlayCircle,
+  Repeat2,
+  SearchCheck,
+  Send,
+  Share2,
   ShieldCheck,
+  SquareTerminal,
+  TestTube2,
+  Trello,
+  UserCheck,
+  Users,
+  Workflow,
+  Wrench,
   X,
+  type LucideIcon,
 } from "lucide-react";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 
@@ -31,6 +58,7 @@ const skillGroups = [
   {
     number: "01",
     title: "Manual Testing",
+    icon: ClipboardCheck,
     items: [
       "Functional Testing",
       "Regression Testing",
@@ -47,16 +75,19 @@ const skillGroups = [
   {
     number: "02",
     title: "Automation",
+    icon: Bot,
     items: ["Playwright", "Selenium", "API Automation", "Page Object Model", "GitHub Actions"],
   },
   {
     number: "03",
     title: "API & Performance",
+    icon: Gauge,
     items: ["Postman", "REST API Testing", "GraphQL Testing", "Newman", "Apache JMeter"],
   },
   {
     number: "04",
     title: "Tools & Technologies",
+    icon: Wrench,
     items: [
       "Jira",
       "GitLab",
@@ -73,6 +104,41 @@ const skillGroups = [
     ],
   },
 ];
+
+const skillIcons: Record<string, LucideIcon> = {
+  "Functional Testing": TestTube2,
+  "Regression Testing": Repeat2,
+  "Smoke Testing": TestTube2,
+  "Sanity Testing": ShieldCheck,
+  "Exploratory Testing": SearchCheck,
+  "Integration Testing": Network,
+  UAT: UserCheck,
+  "Test Planning": ClipboardList,
+  "Test Case Design": ListChecks,
+  "Bug Reporting": Bug,
+  Playwright: PlayCircle,
+  Selenium: Bot,
+  "API Automation": Braces,
+  "Page Object Model": Layers3,
+  "GitHub Actions": Workflow,
+  Postman: Send,
+  "REST API Testing": Network,
+  "GraphQL Testing": Share2,
+  Newman: SquareTerminal,
+  "Apache JMeter": Gauge,
+  Jira: Bug,
+  GitLab: GitBranch,
+  Trello,
+  GitHub: Github,
+  SQL: Database,
+  Java: Coffee,
+  C: Code2,
+  "Visual Studio": SquareTerminal,
+  Agile: Users,
+  Scrum: Users,
+  SDLC: Workflow,
+  STLC: GitPullRequest,
+};
 
 type Project = {
   index: string;
@@ -601,17 +667,33 @@ export default function Portfolio() {
           <Reveal>
             <SectionHeading label="02 / Skills" title="Coverage across the quality lifecycle." />
             <div className="skills-grid">
-              {skillGroups.map((group) => (
-                <article className="skill-card" key={group.title}>
-                  <span className="card-number">{group.number}</span>
-                  <h3>{group.title}</h3>
-                  <div className="tag-list">
-                    {group.items.map((item) => (
-                      <span key={item}>{item}</span>
-                    ))}
-                  </div>
-                </article>
-              ))}
+              {skillGroups.map((group) => {
+                const GroupIcon = group.icon;
+
+                return (
+                  <article className="skill-card" key={group.title}>
+                    <div className="skill-card-heading">
+                      <span className="card-number">{group.number}</span>
+                      <span className="skill-card-icon" aria-hidden="true">
+                        <GroupIcon />
+                      </span>
+                    </div>
+                    <h3>{group.title}</h3>
+                    <div className="tag-list">
+                      {group.items.map((item) => {
+                        const SkillIcon = skillIcons[item] ?? Check;
+
+                        return (
+                          <span className="skill-tag" key={item}>
+                            <SkillIcon aria-hidden="true" />
+                            {item}
+                          </span>
+                        );
+                      })}
+                    </div>
+                  </article>
+                );
+              })}
             </div>
           </Reveal>
         </section>
