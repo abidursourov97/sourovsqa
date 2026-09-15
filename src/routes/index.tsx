@@ -84,6 +84,49 @@ type Project = {
   repository: string;
 };
 
+type LiveProject = {
+  title: string;
+  domain: string;
+  platform: string;
+  description: string;
+  image: string;
+  site: string;
+  testTypes: string[];
+};
+
+const liveProjects: LiveProject[] = [
+  {
+    title: "Allred’s",
+    domain: "allreds.com",
+    platform: "B2B HVAC eCommerce · Production QA",
+    description:
+      "Performed end-to-end testing across product discovery, search, authentication, customer accounts, cart, checkout, locations and responsive workflows before production releases.",
+    image: `${import.meta.env.BASE_URL}projects/allreds-live.jpg`,
+    site: "https://allreds.com/",
+    testTypes: ["Functional", "Regression", "Exploratory", "Release Validation"],
+  },
+  {
+    title: "Mountain West",
+    domain: "mwdl.com",
+    platform: "B2B Security & Powersports eCommerce · Production QA",
+    description:
+      "Fully tested catalog navigation, categories, search, authentication, quick order, account, cart, checkout and responsive user journeys for the live storefront.",
+    image: `${import.meta.env.BASE_URL}projects/mountain-west-live.jpg`,
+    site: "https://mwdl.com/",
+    testTypes: ["Functional", "Regression", "Cross-browser", "UAT"],
+  },
+  {
+    title: "Cairngorm Artists",
+    domain: "cairngormartists.com",
+    platform: "Global Art eCommerce · Production QA",
+    description:
+      "Tested collections, product options, filters, multi-currency journeys, customer accounts, reviews, cart, checkout and responsive behaviour for the live art marketplace.",
+    image: `${import.meta.env.BASE_URL}projects/cairngorm-artists-live.jpg`,
+    site: "https://cairngormartists.com/",
+    testTypes: ["Functional", "Regression", "Exploratory", "Responsive"],
+  },
+];
+
 const automationProjects: Project[] = [
   {
     index: "A01",
@@ -307,6 +350,39 @@ function ProjectCard({ project }: { project: Project }) {
   );
 }
 
+function LiveProjectCard({ project }: { project: LiveProject }) {
+  return (
+    <Reveal className="live-project-reveal">
+      <article className="live-project-card">
+        <div className="live-project-preview">
+          <img src={project.image} alt={`${project.title} live website homepage`} loading="lazy" />
+          <span className="live-status">
+            <span />
+            Live
+          </span>
+        </div>
+        <div className="live-project-body">
+          <p className="live-project-platform">{project.platform}</p>
+          <h4>{project.title}</h4>
+          <a className="live-project-domain" href={project.site} target="_blank" rel="noreferrer">
+            {project.domain}
+          </a>
+          <p className="live-project-description">{project.description}</p>
+          <div className="live-test-types" aria-label={`${project.title} test types`}>
+            {project.testTypes.map((testType) => (
+              <span key={testType}>{testType}</span>
+            ))}
+          </div>
+          <a className="visit-site-link" href={project.site} target="_blank" rel="noreferrer">
+            Visit Live Site
+            <ArrowUpRight />
+          </a>
+        </div>
+      </article>
+    </Reveal>
+  );
+}
+
 export default function Portfolio() {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -513,6 +589,27 @@ export default function Portfolio() {
               copy="Explore hands-on automation and manual testing projects with traceable coverage, documentation and execution results."
             />
           </Reveal>
+          <div className="project-group live-production-group">
+            <Reveal className="project-group-reveal">
+              <div className="project-group-heading">
+                <div>
+                  <p className="project-group-kicker">Live Production Testing</p>
+                  <h3>Real products, tested for real users.</h3>
+                  <p>
+                    Live eCommerce platforms I fully tested and validated through end-to-end QA,
+                    regression and release-focused testing.
+                  </p>
+                </div>
+                <span className="project-count">03 Live Projects</span>
+              </div>
+            </Reveal>
+            <div className="live-projects-grid">
+              {liveProjects.map((project) => (
+                <LiveProjectCard key={project.title} project={project} />
+              ))}
+            </div>
+          </div>
+
           <div className="project-group">
             <Reveal className="project-group-reveal">
               <div className="project-group-heading">
