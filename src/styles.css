@@ -730,6 +730,29 @@ button:focus-visible {
   color: var(--muted-foreground);
   font-size: 0.64rem;
 }
+.live-access-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin: auto 0 0.85rem;
+  padding: 0.68rem 0.75rem;
+  border: 1px solid color-mix(in oklab, var(--primary) 28%, var(--border));
+  border-radius: 0.55rem;
+  background: color-mix(in oklab, var(--primary) 6%, transparent);
+  color: var(--muted-foreground);
+  font-size: 0.66rem;
+  line-height: 1.5;
+}
+.live-access-note svg {
+  width: 0.85rem;
+  height: 0.85rem;
+  flex: 0 0 auto;
+  margin-top: 0.08rem;
+  color: var(--primary);
+}
+.live-access-note + .visit-site-link {
+  margin-top: 0;
+}
 .visit-site-link {
   width: fit-content;
   display: inline-flex;

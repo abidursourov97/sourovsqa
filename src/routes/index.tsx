@@ -15,6 +15,7 @@ import {
   GitBranch,
   GitPullRequest,
   Github,
+  Globe2,
   Layers3,
   Linkedin,
   ListChecks,
@@ -158,6 +159,7 @@ type LiveProject = {
   image: string;
   site: string;
   testTypes: string[];
+  accessNote?: string;
 };
 
 const liveProjects: LiveProject[] = [
@@ -170,6 +172,7 @@ const liveProjects: LiveProject[] = [
     image: `${import.meta.env.BASE_URL}projects/allreds-live.jpg`,
     site: "https://allreds.com/",
     testTypes: ["Functional", "Regression", "Exploratory", "Release Validation"],
+    accessNote: "US VPN required. Please connect before visiting this live site.",
   },
   {
     title: "Mountain West",
@@ -474,6 +477,12 @@ function LiveProjectCard({ project }: { project: LiveProject }) {
               <span key={testType}>{testType}</span>
             ))}
           </div>
+          {project.accessNote ? (
+            <p className="live-access-note">
+              <Globe2 aria-hidden="true" />
+              <span>{project.accessNote}</span>
+            </p>
+          ) : null}
           <a className="visit-site-link" href={project.site} target="_blank" rel="noreferrer">
             Visit Live Site
             <ArrowUpRight />
