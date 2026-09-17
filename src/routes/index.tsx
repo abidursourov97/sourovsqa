@@ -542,10 +542,15 @@ export default function Portfolio() {
               the <em>happy path.</em>
             </h1>
             <p className="hero-description">
-              I’m Abidur Rahman Sourov, a Software QA Engineer with 3.5+ years of experience in
-              manual and automated testing across web and mobile applications. I specialise in
-              functional, regression, API and performance testing, helping Agile teams identify
-              risks early and deliver reliable, high-quality software.
+              This is Abidur, a Software QA Engineer with 3.5+ years of experience testing SaaS,
+              eCommerce, web, and mobile applications.
+              <br />
+              <br />
+              My expertise includes Manual Testing, UI Automation, API Testing, Performance Testing,
+              Test Planning, and Defect Management.
+              <br />
+              <br />I help Agile teams identify risks early, improve product quality, and release
+              reliable software with confidence.
             </p>
             <div className="hero-actions">
               <Button asChild size="lg">
