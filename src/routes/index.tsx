@@ -176,12 +176,12 @@ const liveProjects: LiveProject[] = [
   },
   {
     title: "Mountain West",
-    domain: "mwdl.com",
+    domain: "mwd1.com",
     platform: "B2B Security & Powersports eCommerce · Production QA",
     description:
       "Fully tested catalog navigation, categories, search, authentication, quick order, account, cart, checkout and responsive user journeys for the live storefront.",
     image: `${import.meta.env.BASE_URL}projects/mountain-west-live.jpg`,
-    site: "https://mwdl.com/",
+    site: "https://mwd1.com/",
     testTypes: ["Functional", "Regression", "Cross-browser", "UAT"],
   },
   {
@@ -542,9 +542,10 @@ export default function Portfolio() {
               the <em>happy path.</em>
             </h1>
             <p className="hero-description">
-              I’m Abidur Rahman Sourov, a Software Quality Assurance Engineer with 3.5+ years of
-              experience testing web and mobile applications through manual, API, automation and
-              performance testing.
+              I’m Abidur Rahman Sourov, a Software QA Engineer with 3.5+ years of experience in
+              manual and automated testing across web and mobile applications. I specialise in
+              functional, regression, API and performance testing, helping Agile teams identify
+              risks early and deliver reliable, high-quality software.
             </p>
             <div className="hero-actions">
               <Button asChild size="lg">
